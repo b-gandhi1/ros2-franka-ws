@@ -32,11 +32,14 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(franka_msgs)
 
 add_executable(motion_pillow src/motion_pillow.cpp)
+add_executable(endeffpose src/endeffpose.cpp)
 
 ament_target_dependencies(motion_pillow rclcpp std_msgs geometry_msgs moveit moveit_ros_planning_interface)
+ament_target_dependencies(endeffpose rclcpp std_msgs geometry_msgs moveit moveit_ros_planning_interface)
 
 install(TARGETS
   motion_pillow
+  endeffpose
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch

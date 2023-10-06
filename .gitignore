@@ -1,4 +1,10 @@
-src/franka_ros2_baslin
+
 build/
 install/
 log/
+src/franka_ros2_baslin/.idea
+src/franka_ros2_baslin/.vscode
+src/franka_ros2_baslin/*.pyc
+src/franka_ros2_baslin/COLCON_IGNORE
+src/franka_ros2_baslin/AMENT_IGNORE
+src/franka_ros2_baslin/cmake-build-*/

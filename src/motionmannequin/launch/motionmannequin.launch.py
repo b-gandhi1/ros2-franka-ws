@@ -168,8 +168,17 @@ def generate_launch_description():
         package="motionmannequin",
         executable="motion_pillow",
         output="screen",
-        parameters=[robot_description_config,
-            robot_description_semantic_config,  
+        parameters=[robot_description,
+            robot_description_semantic,  
+        ],
+    )
+    
+    endeff = Node(
+        package="motionmannequin",
+        executable="endeffpose",
+        output="screen",
+        parameters=[robot_description,
+            robot_description_semantic,  
         ],
     )
 
@@ -252,6 +261,7 @@ def generate_launch_description():
          run_move_group_node,
          ros2_control_node,
          motion_pillow,
+         endeff,
          mongodb_server_node,
          joint_state_publisher,
          gripper_launch_file
