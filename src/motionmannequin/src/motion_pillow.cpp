@@ -53,25 +53,24 @@ int main(int argc, char **argv)
     else
     {
       // joint_values = {1.663, -1.735, -1.542, -2.328, -2.276, 1.909, 1.689};
-      joint_values = {1.713,-1.746,-1.421,-2.282,-2.067,1.818,1.447}; // middle position
+      joint_values = {1.711,-1.749,-1.421,-2.283,-2.061,1.828,1.444}; // middle position
       move_group.setJointValueTarget(joint_names, joint_values);
       move_group.setMaxVelocityScalingFactor(0.1);
       move_group.move();
 
       // joint_values = {1.418, -1.748, -1.680, -2.294, -2.138, 2.380, 1.695};
-      joint_values = {1.466,-1.761,-1.551,-2.292,-1.899,2.188,1.458}
-; // towards me
+      joint_values = {1.494,-1.756,-1.540,-2.320,-1.999,2.153,1.497}; // towards me
       move_group.setJointValueTarget(joint_names, joint_values);
       move_group.move();
 
       
       // joint_values = {1.869, -1.716, -1.531, -2.386, -2.457, 1.562, 1.582}; 
-      joint_values = {1.713,-1.746,-1.421,-2.282,-2.067,1.818,1.447}; // same middle again
+      joint_values = {1.711,-1.749,-1.421,-2.283,-2.061,1.828,1.444}; // same middle again
       move_group.setJointValueTarget(joint_names, joint_values);
       move_group.move();
 
       // joint_values = {1.663, -1.735, -1.542, -2.328, -2.276, 1.909, 1.689};
-      joint_values = {2.062,-1.666,-1.465,-2.334,-2.379,1.341,1.417}; // away from me
+      joint_values = {1.934,-1.732,-1.414,-2.321,-2.308,1.484,1.410}; // away from me
       move_group.setJointValueTarget(joint_names, joint_values);
       move_group.move();
 
