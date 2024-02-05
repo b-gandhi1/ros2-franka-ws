@@ -65,8 +65,9 @@ int main(int argc, char **argv)
     }
     else
     {
-      // joint_values = {1.663, -1.735, -1.542, -2.328, -2.276, 1.909, 1.689};
-      joint_values1 = {1.711,-1.749,-1.421,-2.283,-2.061,1.828,1.444}; // middle position
+      // joint_values1 = {1.711,-1.749,-1.421,-2.283,-2.061,1.828,1.444}; // middle position
+      joint_values1 = {1.2549,-1.7506,-1.7255,-2.7260,-2.3606,1.9730,1.7437};
+
       move_group.setJointValueTarget(joint_names, joint_values1);
       move_group.setMaxVelocityScalingFactor(0.1);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
@@ -75,8 +76,9 @@ int main(int argc, char **argv)
 
       // loop_rate2.sleep();
 
-      // joint_values = {1.418, -1.748, -1.680, -2.294, -2.138, 2.380, 1.695};
-      joint_values2 = {1.494,-1.756,-1.540,-2.320,-1.999,2.153,1.497}; // towards me
+      // joint_values2 = {1.494,-1.756,-1.540,-2.320,-1.999,2.153,1.497}; // towards me
+      joint_values2 = {1.1017,-1.7605,-1.8026,-2.7145,-2.3314,2.1215,1.8110};
+
       move_group.setJointValueTarget(joint_names, joint_values2);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
@@ -84,8 +86,9 @@ int main(int argc, char **argv)
 
       // loop_rate2.sleep();
 
-      // joint_values = {1.869, -1.716, -1.531, -2.386, -2.457, 1.562, 1.582}; 
-      joint_values3 = {1.711,-1.749,-1.421,-2.283,-2.061,1.828,1.444}; // same middle again
+      // joint_values3 = {1.711,-1.749,-1.421,-2.283,-2.061,1.828,1.444}; // same middle again
+      joint_values3 = {1.2549,-1.7506,-1.7255,-2.7260,-2.3606,1.9730,1.7437};
+
       move_group.setJointValueTarget(joint_names, joint_values3);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
@@ -93,8 +96,8 @@ int main(int argc, char **argv)
 
       // loop_rate2.sleep();
 
-      // joint_values = {1.663, -1.735, -1.542, -2.328, -2.276, 1.909, 1.689};
-      joint_values4 = {1.934,-1.732,-1.414,-2.321,-2.308,1.484,1.410}; // away from me
+      // joint_values4 = {1.934,-1.732,-1.414,-2.321,-2.308,1.484,1.410}; // away from me
+      joint_values4 = {1.4685,-1.7490,-1.7105,-2.7661,-2.5014,1.6631,1.7115};
       move_group.setJointValueTarget(joint_names, joint_values4);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);

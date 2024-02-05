@@ -10,6 +10,7 @@ int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
     rclcpp::Node::SharedPtr node_ = std::make_shared<rclcpp::Node>("endeffpose");
+    rclcpp::WallRate loop_rate(100);
 
     rclcpp::executors::MultiThreadedExecutor executor;
     executor.add_node(node_);
@@ -28,6 +29,7 @@ int main(int argc, char **argv)
         geometry_msgs::msg::PoseStamped current_pose_cont;
         current_pose_cont = move_group_cont.getCurrentPose();
         endeff_publisher_->publish(current_pose_cont);
+        loop_rate.sleep();
     }
     return 0;
 }
