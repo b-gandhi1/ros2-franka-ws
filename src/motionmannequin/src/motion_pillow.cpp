@@ -42,6 +42,7 @@ int main(int argc, char **argv)
   std::vector<std::string> joint_names = move_group.getJointNames();
   //   std::vector<double> joint_values = { 1.923,-1.723, -1.4935, -1.945, -2.178, 1.996, 1.562 };
 
+  // std::vector<double> joint_values1;
   std::vector<double> joint_values1,joint_values2,joint_values3,joint_values4;
   std_msgs::msg::Int32 msg;
   int count = 0;
@@ -65,42 +66,51 @@ int main(int argc, char **argv)
     }
     else
     {
-      // joint_values1 = {1.711,-1.749,-1.421,-2.283,-2.061,1.828,1.444}; // middle position
-      joint_values1 = {1.2549,-1.7506,-1.7255,-2.7260,-2.3606,1.9730,1.7437};
-
+      // joint_values1 = {1.711,-1.749,-1.421,-2.283,-2.061,1.828,1.444}; // middle position 1
+      // joint_values1 = {1.2549,-1.7506,-1.7255,-2.7260,-2.3606,1.9730,1.7437}; // middle pos 2
+      joint_values1 = {1.2215,-1.7602,-1.8127,-2.6935,-2.4901,2.0506,1.9047}; // Tz, DOWN
       move_group.setJointValueTarget(joint_names, joint_values1);
       move_group.setMaxVelocityScalingFactor(0.1);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
+
+      sleep(3); // for 3 seconds, for Tz motion
+
       // move_group.move();
 
       // loop_rate2.sleep();
 
-      // joint_values2 = {1.494,-1.756,-1.540,-2.320,-1.999,2.153,1.497}; // towards me
-      joint_values2 = {1.1017,-1.7605,-1.8026,-2.7145,-2.3314,2.1215,1.8110};
-
+      // joint_values2 = {1.494,-1.756,-1.540,-2.320,-1.999,2.153,1.497}; // towards me 1
+      // joint_values2 = {1.1017,-1.7605,-1.8026,-2.7145,-2.3314,2.1215,1.8110}; // towards me 2
+      joint_values2 = {1.2426,-1.7615,-1.7752,-2.6919,-2.4811,2.0373,1.9152}; // Tz, MIDDLE
       move_group.setJointValueTarget(joint_names, joint_values2);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
+
+      sleep(3); // for 3 seconds, for Tz motion
+
       // move_group.move();
 
       // loop_rate2.sleep();
 
-      // joint_values3 = {1.711,-1.749,-1.421,-2.283,-2.061,1.828,1.444}; // same middle again
-      joint_values3 = {1.2549,-1.7506,-1.7255,-2.7260,-2.3606,1.9730,1.7437};
-
+      // joint_values3 = {1.711,-1.749,-1.421,-2.283,-2.061,1.828,1.444}; // same middle again 1
+      // joint_values3 = {1.2549,-1.7506,-1.7255,-2.7260,-2.3606,1.9730,1.7437}; // same middle again 2
+      joint_values3 = {1.2554,-1.7619,-1.7495,-2.6890,-2.4798,2.0341,1.9151}; // Tz, UP
       move_group.setJointValueTarget(joint_names, joint_values3);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
+
       // move_group.move();
 
       // loop_rate2.sleep();
 
-      // joint_values4 = {1.934,-1.732,-1.414,-2.321,-2.308,1.484,1.410}; // away from me
-      joint_values4 = {1.4685,-1.7490,-1.7105,-2.7661,-2.5014,1.6631,1.7115};
+      // joint_values4 = {1.934,-1.732,-1.414,-2.321,-2.308,1.484,1.410}; // away from me 1
+      // joint_values4 = {1.4685,-1.7490,-1.7105,-2.7661,-2.5014,1.6631,1.7115}; // away from me 2
+      joint_values4 = {1.2426,-1.7615,-1.7752,-2.6919,-2.4811,2.0373,1.9152}; // Tz, MIDDLE
       move_group.setJointValueTarget(joint_names, joint_values4);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
+
       // move_group.move();
 
       // loop_rate2.sleep();
