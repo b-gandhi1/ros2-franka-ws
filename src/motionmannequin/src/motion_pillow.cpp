@@ -72,11 +72,10 @@ int main(int argc, char **argv)
       move_group.setJointValueTarget(joint_names, joint_values1);
       move_group.setMaxVelocityScalingFactor(0.1);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
-      move_group.execute(my_plan);
-
-      sleep(3); // for 3 seconds, for Tz motion
-
+      // move_group.execute(my_plan);
       // move_group.move();
+
+      // sleep(2); // for 2 seconds, for Tz motion
 
       // loop_rate2.sleep();
 
@@ -86,10 +85,11 @@ int main(int argc, char **argv)
       move_group.setJointValueTarget(joint_names, joint_values2);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
-
-      sleep(3); // for 3 seconds, for Tz motion
-
       // move_group.move();
+
+      sleep(2); // for 2 seconds, for Tz motion
+
+      
 
       // loop_rate2.sleep();
 
@@ -99,8 +99,9 @@ int main(int argc, char **argv)
       move_group.setJointValueTarget(joint_names, joint_values3);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
-
       // move_group.move();
+
+      sleep(2); // for 2 seconds, for Tz motion
 
       // loop_rate2.sleep();
 
@@ -109,9 +110,10 @@ int main(int argc, char **argv)
       joint_values4 = {1.2426,-1.7615,-1.7752,-2.6919,-2.4811,2.0373,1.9152}; // Tz, MIDDLE
       move_group.setJointValueTarget(joint_names, joint_values4);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
-      move_group.execute(my_plan);
-
+      // move_group.execute(my_plan);
       // move_group.move();
+
+      // sleep(2); // for 2 seconds, for Tz motion
 
       // loop_rate2.sleep();
 
