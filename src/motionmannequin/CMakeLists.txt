@@ -33,13 +33,18 @@ find_package(franka_msgs)
 
 add_executable(motion_pillow src/motion_pillow.cpp)
 add_executable(endeffpose src/endeffpose.cpp)
+add_executable(external_force src/external_force.cpp)
+
+target_link_libraries(external_force /usr/lib64/libfranka.so)
 
 ament_target_dependencies(motion_pillow rclcpp std_msgs geometry_msgs moveit moveit_ros_planning_interface)
 ament_target_dependencies(endeffpose rclcpp std_msgs geometry_msgs moveit moveit_ros_planning_interface)
+ament_target_dependencies(external_force rclcpp)
 
 install(TARGETS
   motion_pillow
   endeffpose
+  external_force
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch
