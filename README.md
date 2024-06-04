@@ -43,5 +43,8 @@ ros2 run motionmannequin external_force # needs running once to set joint torque
 
 # and finally run the motion file:
 ros2 launch motionmannequin motionmannequin.launch.py robot_ip:=173.16.0.2
+
+# OR - use shell script for above: 
+sh run_prog_commands.sh
 ```
 
