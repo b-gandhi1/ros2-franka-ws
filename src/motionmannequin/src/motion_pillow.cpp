@@ -48,12 +48,22 @@ std::tuple<std::vector<double>,std::vector<double>,std::vector<double>,std::vect
   return std::make_tuple(joint_values1, joint_values2, joint_values3, joint_values4);
 }
 
-std::tuple<std::vector<double>,std::vector<double>,std::vector<double>,std::vector<double>> rotY_newman()
+std::tuple<std::vector<double>,std::vector<double>,std::vector<double>,std::vector<double>> pitchY_newman()
 {
   joint_values1={1.3965, -1.7091, -1.7673, -2.5708, -2.5066, 2.1008, 1.7940}; // middle
   joint_values2={1.6556, -1.7078, -1.7361, -2.6458, -2.5922, 1.6585, 1.6732}; // towards me
   joint_values3=joint_values1; // middle
   joint_values4={1.1734, -1.7355, -1.8791, -2.5309, -2.4114, 2.4029, 1.9135}; // away from me
+  
+  return std::make_tuple(joint_values1, joint_values2, joint_values3, joint_values4);
+}
+
+std::tuple<std::vector<double>,std::vector<double>,std::vector<double>,std::vector<double>> rollX_newman()
+{
+  joint_values1={1.3965, -1.7091, -1.7673, -2.5708, -2.5066, 2.1008, 1.7940}; // down
+  joint_values2={1.2584, -1.7567, -1.9403, -2.7137, -2.8568, 2.0881, 1.8739}; // up
+  joint_values3=joint_values1; //
+  joint_values4=joint_values2; // 
   
   return std::make_tuple(joint_values1, joint_values2, joint_values3, joint_values4);
 }
@@ -108,7 +118,7 @@ int main(int argc, char **argv)
     }
     else
     {
-      tie(joint_values_1, joint_values_2, joint_values_3, joint_values_4) =  rotY_newman(); // is there a way to pass this as an argument with ros2 run?? 
+      tie(joint_values_1, joint_values_2, joint_values_3, joint_values_4) =  pitchY_newman(); // is there a way to pass this as an argument with ros2 run?? 
 
       move_group.setJointValueTarget(joint_names, joint_values_1);
       move_group.setMaxVelocityScalingFactor(0.1);

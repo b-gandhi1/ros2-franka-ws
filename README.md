@@ -48,3 +48,8 @@ ros2 launch motionmannequin motionmannequin.launch.py robot_ip:=173.16.0.2
 sh run_prog_commands.sh
 ```
 
+# Bring Franka to Home Position: 
+```
+ros2 launch franka_moveit_config moveit.launch.py robot_ip:=d173.16.0.2
+```
+Then in rviz select `motion planning` > under goal pose select `ready` > `plan and execute` > close rviz and terminal > head back to franka desk > lock joints > shutdown 
