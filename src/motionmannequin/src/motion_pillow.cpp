@@ -1,6 +1,7 @@
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 #include <std_msgs/msg/int32.hpp>
+#include <std_msgs/msg/float64_multi_array.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 
 #include <moveit_msgs/msg/display_robot_state.hpp>
@@ -9,6 +10,10 @@
 #include <moveit_msgs/msg/attached_collision_object.hpp>
 #include <moveit_msgs/msg/collision_object.hpp>
 #include <moveit_msgs/msg/move_it_error_codes.hpp>
+
+#include <moveit/robot_model_loader/robot_model_loader.h>
+#include <moveit/robot_model/robot_model.h>
+#include <moveit/robot_state/robot_state.h>
 
 #include <tuple>
 
@@ -76,7 +81,7 @@ int main(int argc, char **argv)
 
   // Publisher
   auto pub_ = move_group_node->create_publisher<std_msgs::msg::Int32>("camera_trigger", 10);
-  auto pub_2 = move_group_node->create_publisher<geometry_msgs::msg::PoseStamped>("franka_ee_pos", 10);
+  // auto pub_2 = move_group_node->create_publisher<geometry_msgs::msg::PoseStamped>("franka_ee_pos", 10);
 
   rclcpp::WallRate loop_rate(0.25);
   rclcpp::WallRate loop_rate2(1);
@@ -124,13 +129,16 @@ int main(int argc, char **argv)
       move_group.setMaxVelocityScalingFactor(0.1);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
-      // move_group.move();
+
+
       // sleep(2); // for 2 seconds, for Tz motion
       // loop_rate2.sleep();
+      
 
       move_group.setJointValueTarget(joint_names, joint_values_2);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
+
       // move_group.move();
 
       // sleep(2); // for 2 seconds, for Tz motion
@@ -140,6 +148,7 @@ int main(int argc, char **argv)
       move_group.setJointValueTarget(joint_names, joint_values_3);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
+
       // move_group.move();
 
       // loop_rate2.sleep();
@@ -147,12 +156,14 @@ int main(int argc, char **argv)
       move_group.setJointValueTarget(joint_names, joint_values_4);
       success = (move_group.plan(my_plan) == moveit_msgs::msg::MoveItErrorCodes::SUCCESS);
       move_group.execute(my_plan);
+
       // move_group.move();
 
       // loop_rate2.sleep();
 
       // msg.data = 1;
       // pub_->publish(msg);
+      // break;
     }
     loop_rate2.sleep();
   }
