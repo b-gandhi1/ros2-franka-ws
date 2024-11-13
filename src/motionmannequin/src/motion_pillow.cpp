@@ -65,13 +65,41 @@ std::tuple<std::vector<double>,std::vector<double>,std::vector<double>,std::vect
 
 std::tuple<std::vector<double>,std::vector<double>,std::vector<double>,std::vector<double>> rollX_newman()
 {
-  joint_values1={1.3965, -1.7091, -1.7673, -2.5708, -2.5066, 2.1008, 1.7940}; // down
-  joint_values2={1.2584, -1.7567, -1.9403, -2.7137, -2.8568, 2.0881, 1.8739}; // up
+  // joint_values1={1.3965, -1.7091, -1.7673, -2.5708, -2.5066, 2.1008, 1.7940}; // down
+
+  joint_values1 = {1.5083, -1.7227, -1.6547, -2.5068, -2.2295, 1.9141, 1.7513}; // down, new gripper
+
+  // joint_values2={1.2584, -1.7567, -1.9403, -2.7137, -2.8568, 2.0881, 1.8739}; // up
+
+  joint_values2 = {1.1944, -1.7234, -1.9795, -2.6901, -2.8055, 2.2756, 1.8903}; // up, new gripper 
+
   joint_values3=joint_values1; //
   joint_values4=joint_values2; // 
   
   return std::make_tuple(joint_values1, joint_values2, joint_values3, joint_values4);
 }
+
+std::tuple<std::vector<double>,std::vector<double>,std::vector<double>,std::vector<double>> rollX_newmcp()
+{
+  joint_values1 = {1.3708, -1.7227, -1.8785, -2.6299, -2.5912, 2.0682, 1.8774}; // down
+  joint_values2 = {1.2784, -1.7357, -2.0110, -2.6847, -2.8507, 2.1356, 1.9892}; // up
+
+  joint_values3=joint_values1; //
+  joint_values4=joint_values2; // 
+  
+  return std::make_tuple(joint_values1, joint_values2, joint_values3, joint_values4);
+}
+
+std::tuple<std::vector<double>,std::vector<double>,std::vector<double>,std::vector<double>> pitchY_newmcp()
+{
+  joint_values1={1.3708, -1.7227, -1.8785, -2.6299, -2.5912, 2.0682, 1.8774}; // middle
+  joint_values2={1.6826, -1.7250, -1.8499, -2.6685, -2.7698, 1.6060, 1.8900}; // towards me
+  joint_values3=joint_values1; // middle
+  joint_values4={1.1762, -1.7350, -1.9595, -2.5508, -2.4631, 2.4343, 1.8902}; // away from me
+  
+  return std::make_tuple(joint_values1, joint_values2, joint_values3, joint_values4);
+}
+
 int main(int argc, char **argv)
 {
   rclcpp::init(argc, argv);
@@ -123,7 +151,7 @@ int main(int argc, char **argv)
     }
     else
     {
-      tie(joint_values_1, joint_values_2, joint_values_3, joint_values_4) =  pitchY_newman(); // is there a way to pass this as an argument with ros2 run?? 
+      tie(joint_values_1, joint_values_2, joint_values_3, joint_values_4) =  pitchY_newmcp(); // is there a way to pass this as an argument with ros2 run?? 
 
       move_group.setJointValueTarget(joint_names, joint_values_1);
       move_group.setMaxVelocityScalingFactor(0.1);
